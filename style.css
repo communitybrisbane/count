@@ -1308,3 +1308,1313 @@ section p {
 #epilogue .bg-white.border-2.border-black:hover {
   transform: translateY(-4px);
 } 
+/* General body styles */
+body {
+    font-family: 'Noto Sans JP', sans-serif;
+    background-color: #F8F9FA;
+    color: #212529;
+}
+
+/* Custom font for specific elements */
+.font-montserrat {
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Header with moving film background */
+header {
+    position: relative;
+    overflow: hidden;
+    background: transparent;
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Film strip background container */
+.film-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    animation: filmMove 60s linear infinite;
+    z-index: 1;
+}
+
+/* Individual film frames */
+.film-frame {
+    flex-shrink: 0;
+    width: 300px;
+    height: 100%;
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+    opacity: 1;
+    border-right: 2px solid rgba(255, 255, 255, 0.2);
+    position: relative;
+}
+
+.film-frame::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, 
+        rgba(0, 0, 0, 0.1) 0%, 
+        rgba(0, 0, 0, 0.05) 50%, 
+        rgba(0, 0, 0, 0.1) 100%);
+    pointer-events: none;
+}
+
+/* Film perforations removed for clearer images */
+
+/* Film movement animation */
+@keyframes filmMove {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-6000px);
+    }
+}
+
+/* Header content overlay */
+header > div {
+    position: relative;
+    z-index: 2;
+    background: transparent;
+    margin: 0 20px;
+    padding: 20px;
+}
+
+/* Timeline item pseudo-element for the dot */
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -31px;
+    top: 24px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background-color: #005A9C;
+    border: 3px solid #F8F9FA;
+    z-index: 10;
+    transition: transform 0.3s ease;
+}
+
+/* Hover effect for the timeline dot */
+.timeline-item:hover::before {
+    transform: scale(1.2);
+}
+
+/* The vertical line for the timeline */
+.timeline-path {
+    position: absolute;
+    left: -23px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background-color: #DEE2E6;
+}
+
+/* Modal transition */
+.modal {
+    transition: opacity 0.3s ease;
+}
+
+/* Accordion content for smooth open/close */
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-in-out;
+}
+
+.accordion-content.active {
+    max-height: 500px;
+}
+
+/* Fade-in and up animation for elements */
+.fade-in-up {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+/* Visible state for the fade-in animation */
+.fade-in-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Background gradient for the bonus section */
+.bonus-bg {
+    background-color: #eef2ff;
+    background-image:
+        radial-gradient(at 40% 20%, hsla(28,100%,74%,0.3) 0px, transparent 50%),
+        radial-gradient(at 80% 0%, hsla(189,100%,56%,0.3) 0px, transparent 50%),
+        radial-gradient(at 0% 50%, hsla(355,100%,93%,0.3) 0px, transparent 50%),
+        radial-gradient(at 80% 50%, hsla(340,100%,76%,0.3) 0px, transparent 50%),
+        radial-gradient(at 0% 100%, hsla(22,100%,77%,0.3) 0px, transparent 50%),
+        radial-gradient(at 80% 100%, hsla(242,100%,70%,0.3) 0px, transparent 50%),
+        radial-gradient(at 0% 0%, hsla(343,100%,76%,0.3) 0px, transparent 50%);
+}
+
+/* Header Carousel */
+#header-carousel {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.carousel-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0;
+    transition: opacity 2s ease-in-out;
+}
+
+.carousel-slide.active {
+    opacity: 1;
+}
+
+/* Timeline Styles */
+.timeline-item {
+    position: relative;
+    margin-bottom: 3rem;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.timeline-item.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.timeline-item:nth-child(odd) .timeline-content {
+    margin-left: 0;
+    margin-right: 3rem;
+    text-align: right;
+}
+
+.timeline-item:nth-child(even) .timeline-content {
+    margin-left: 3rem;
+    margin-right: 0;
+    text-align: left;
+}
+
+.timeline-dot {
+    position: absolute;
+    left: 50%;
+    top: 1.5rem;
+    width: 16px;
+    height: 16px;
+    background: #F47C20;
+    border: 3px solid white;
+    border-radius: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0 0 0 4px #005A9C;
+    z-index: 10;
+}
+
+.timeline-content {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e5e7eb;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.timeline-content:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* Accordion Styles */
+.accordion-item {
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    overflow: hidden;
+    background: white;
+}
+
+.accordion-header {
+    padding: 1rem 1.5rem;
+    background: #f8fafc;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: flex;
+    justify-content: between;
+    align-items: center;
+}
+
+.accordion-header:hover {
+    background: #f1f5f9;
+}
+
+.accordion-content.active {
+    max-height: 500px;
+}
+
+.accordion-body {
+    padding: 1rem 1.5rem;
+    border-top: 1px solid #e5e7eb;
+}
+
+/* Modal Styles */
+.modal.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modal.show #modalContent {
+    transform: scale(1);
+}
+
+/* Skills Grid */
+.skill-item {
+    text-align: center;
+    padding: 1.5rem;
+    border-radius: 12px;
+    background: #f8fafc;
+    border: 1px solid #e5e7eb;
+    transition: all 0.3s ease;
+}
+
+.skill-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    background: white;
+}
+
+.skill-icon {
+    width: 48px;
+    height: 48px;
+    margin: 0 auto 1rem;
+    background: linear-gradient(135deg, #005A9C, #F47C20);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.5rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .timeline-path {
+        left: 2rem;
+    }
+    
+    .timeline-item:nth-child(odd) .timeline-content,
+    .timeline-item:nth-child(even) .timeline-content {
+        margin-left: 4rem;
+        margin-right: 0;
+        text-align: left;
+    }
+    
+    .timeline-dot {
+        left: 2rem;
+    }
+    
+    .font-montserrat {
+        font-size: 3rem !important;
+    }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #005A9C;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #F47C20;
+}
+
+/* Loading Animation */
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+.loading {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Custom Button Styles */
+.btn-primary {
+    background: linear-gradient(135deg, #005A9C, #F47C20);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 90, 156, 0.3);
+}
+
+/* Text Selection */
+::selection {
+    background: #005A9C;
+    color: white;
+}
+
+::-moz-selection {
+    background: #005A9C;
+    color: white;
+} 
+
+/* Table of Contents Styles */
+.toc-section {
+    position: relative;
+    overflow: hidden;
+}
+
+.toc-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
+    transform: translateX(-100%);
+    transition: transform 0.6s ease;
+}
+
+.toc-section:hover::before {
+    transform: translateX(100%);
+}
+
+.toc-number {
+    transition: all 0.3s ease;
+}
+
+.toc-section:hover .toc-number {
+    transform: scale(1.1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.toc-section a {
+    position: relative;
+    text-decoration: none;
+}
+
+.toc-section a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #005A9C, #F47C20);
+    transition: width 0.3s ease;
+}
+
+.toc-section a:hover::after {
+    width: 100%;
+}
+
+/* Smooth scrolling for anchor links */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Responsive adjustments for table of contents */
+@media (max-width: 768px) {
+    .toc-section {
+        margin-bottom: 1rem;
+    }
+    
+    .toc-number {
+        width: 3rem !important;
+        height: 3rem !important;
+        font-size: 1.5rem !important;
+    }
+} 
+
+/* Timeline Summary Table of Contents Styles */
+.timeline-chapter {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.timeline-chapter::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(0, 90, 156, 0.05) 0%, rgba(244, 124, 32, 0.05) 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 1;
+}
+
+.timeline-chapter:hover::before {
+    opacity: 1;
+}
+
+.timeline-chapter:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.timeline-chapter > * {
+    position: relative;
+    z-index: 2;
+}
+
+.chapter-number {
+    transition: all 0.3s ease;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.timeline-chapter:hover .chapter-number {
+    transform: scale(1.1);
+    box-shadow: 0 4px 15px rgba(0, 90, 156, 0.3);
+}
+
+.timeline-chapter a {
+    position: relative;
+    text-decoration: none;
+    display: block;
+    padding: 2px 0;
+    transition: all 0.3s ease;
+}
+
+.timeline-chapter a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #005A9C, #F47C20);
+    transition: width 0.3s ease;
+}
+
+.timeline-chapter a:hover::after {
+    width: 100%;
+}
+
+.timeline-chapter a:hover {
+    transform: translateX(4px);
+}
+
+/* Chapter-specific hover images */
+.timeline-chapter:nth-child(1)::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('images/beach.JPEG');
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 0;
+}
+
+.timeline-chapter:nth-child(2)::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('images/bench.JPEG');
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 0;
+}
+
+.timeline-chapter:nth-child(3)::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('images/castle.JPEG');
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 0;
+}
+
+.timeline-chapter:nth-child(4)::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('images/fusya7.JPEG');
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 0;
+}
+
+.timeline-chapter:nth-child(5)::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('images/simonada.JPEG');
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 0;
+}
+
+.timeline-chapter:nth-child(6)::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('images/urulu.jpg');
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 0;
+}
+
+.timeline-chapter:hover::after {
+    opacity: 0.1;
+}
+
+/* Responsive adjustments for timeline summary */
+@media (max-width: 768px) {
+    .timeline-chapter {
+        margin-bottom: 1rem;
+    }
+    
+    .chapter-number {
+        width: 2.5rem !important;
+        height: 2.5rem !important;
+        font-size: 1.25rem !important;
+    }
+} 
+
+/* Introduction Section Hover Effects */
+.intro-container {
+    cursor: pointer;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    width: 100%;
+    max-width: 100%;
+}
+
+.intro-image {
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+}
+
+.intro-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.intro-container:hover .intro-image img {
+    transform: scale(1.05);
+    filter: brightness(0.3);
+}
+
+.intro-container:hover .intro-overlay {
+    opacity: 1;
+}
+
+.intro-container:hover .intro-content {
+    transform: translateY(0);
+}
+
+.intro-overlay {
+    transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    background: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.7) 100%);
+}
+
+.intro-content {
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Responsive Design for Introduction */
+@media (max-width: 768px) {
+    .intro-container {
+        min-height: 400px;
+    }
+    
+    .intro-content h2 {
+        font-size: 2.5rem;
+    }
+    
+    .intro-content p {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 640px) {
+    .intro-container {
+        min-height: 350px;
+    }
+    
+    .intro-content h2 {
+        font-size: 2rem;
+    }
+    
+    .intro-content p {
+        font-size: 0.9rem;
+    }
+} 
+
+/* Circular Table of Contents Styles */
+.circular-toc-container {
+    position: relative;
+    width: 100%;
+    height: 800px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.central-display {
+    position: absolute;
+    width: 280px;
+    height: 280px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+    border: 2px solid #e5e7eb;
+}
+
+.central-content {
+    text-align: center;
+    padding: 30px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.central-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #005A9C;
+    margin-bottom: 8px;
+}
+
+.central-description {
+    font-size: 1rem;
+    color: #6b7280;
+    line-height: 1.4;
+}
+
+.circular-items-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transition: transform 1s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+.circular-item {
+    position: absolute;
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    cursor: pointer;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    transition: all 0.5s ease;
+    border: 3px solid transparent;
+}
+
+.circular-item:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+}
+
+.circular-item.active {
+    border-color: #005A9C;
+    transform: scale(1.15);
+    box-shadow: 0 12px 40px rgba(0, 90, 156, 0.3);
+}
+
+.circular-item-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.circular-item:hover .circular-item-image {
+    transform: scale(1.1);
+}
+
+.circular-item-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.9);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.circular-item:hover .circular-item-overlay {
+    opacity: 1;
+}
+
+.circular-item.active .circular-item-overlay {
+    background: #005A9C;
+    opacity: 1;
+}
+
+.circular-item-number {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #005A9C;
+    margin-bottom: 4px;
+    transition: transform 1s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+.circular-item.active .circular-item-number {
+    color: white;
+}
+
+.circular-item-title {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #374151;
+    text-align: center;
+    line-height: 1.2;
+    transition: transform 1s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+.circular-item.active .circular-item-title {
+    color: white;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .circular-toc-container {
+        height: 600px;
+    }
+    
+    .central-display {
+        width: 200px;
+        height: 200px;
+    }
+    
+    .central-title {
+        font-size: 1.2rem;
+    }
+    
+    .central-description {
+        font-size: 0.9rem;
+    }
+    
+    .circular-item {
+        width: 120px;
+        height: 120px;
+    }
+    
+    .circular-item-number {
+        font-size: 2rem;
+    }
+    
+    .circular-item-title {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 640px) {
+    .circular-toc-container {
+        height: 500px;
+    }
+    
+    .central-display {
+        width: 180px;
+        height: 180px;
+    }
+    
+    .circular-item {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .circular-item-number {
+        font-size: 1.8rem;
+    }
+    
+    .circular-item-title {
+        font-size: 0.7rem;
+    }
+} 
+
+/* Timeline Styles for Story Section */
+#story-timeline {
+  position: relative;
+  background: white;
+}
+
+.timeline-item {
+  position: relative;
+  z-index: 2;
+}
+
+/* New Timeline Design - Black and White */
+.chapter-card {
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 2rem;
+}
+
+.chapter-card:last-child {
+  margin-bottom: 0;
+}
+
+/* White cards with black borders */
+.chapter-card.bg-white {
+  background: white;
+  border: 2px solid black;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Black cards */
+.chapter-card.bg-black {
+  background: black;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Chapter number styling */
+.chapter-card .text-6xl {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+  transition: all 0.3s ease;
+}
+
+/* Individual Timeline Photo Hover Effects */
+#timeline-photo-1,
+#timeline-photo-2,
+#timeline-photo-3,
+#timeline-photo-4,
+#timeline-photo-5,
+#timeline-photo-6,
+#timeline-photo-7,
+#timeline-photo-8,
+#timeline-photo-9,
+#timeline-photo-10,
+#timeline-photo-11,
+#timeline-photo-12,
+#timeline-photo-13,
+#timeline-photo-14,
+#timeline-photo-15 {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+#timeline-photo-1:hover,
+#timeline-photo-2:hover,
+#timeline-photo-3:hover,
+#timeline-photo-4:hover,
+#timeline-photo-5:hover,
+#timeline-photo-6:hover,
+#timeline-photo-7:hover,
+#timeline-photo-8:hover,
+#timeline-photo-9:hover,
+#timeline-photo-10:hover,
+#timeline-photo-11:hover,
+#timeline-photo-12:hover,
+#timeline-photo-13:hover,
+#timeline-photo-14:hover,
+#timeline-photo-15:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Individual photo overlay effects */
+#timeline-photo-1 .absolute.inset-0,
+#timeline-photo-2 .absolute.inset-0,
+#timeline-photo-3 .absolute.inset-0,
+#timeline-photo-4 .absolute.inset-0,
+#timeline-photo-5 .absolute.inset-0,
+#timeline-photo-6 .absolute.inset-0,
+#timeline-photo-7 .absolute.inset-0,
+#timeline-photo-8 .absolute.inset-0,
+#timeline-photo-9 .absolute.inset-0,
+#timeline-photo-10 .absolute.inset-0,
+#timeline-photo-11 .absolute.inset-0,
+#timeline-photo-12 .absolute.inset-0,
+#timeline-photo-13 .absolute.inset-0,
+#timeline-photo-14 .absolute.inset-0,
+#timeline-photo-15 .absolute.inset-0 {
+  transition: background-color 0.3s ease;
+}
+
+#timeline-photo-1:hover .absolute.inset-0,
+#timeline-photo-2:hover .absolute.inset-0,
+#timeline-photo-3:hover .absolute.inset-0,
+#timeline-photo-4:hover .absolute.inset-0,
+#timeline-photo-5:hover .absolute.inset-0,
+#timeline-photo-6:hover .absolute.inset-0,
+#timeline-photo-7:hover .absolute.inset-0,
+#timeline-photo-8:hover .absolute.inset-0,
+#timeline-photo-9:hover .absolute.inset-0,
+#timeline-photo-10:hover .absolute.inset-0,
+#timeline-photo-11:hover .absolute.inset-0,
+#timeline-photo-12:hover .absolute.inset-0,
+#timeline-photo-13:hover .absolute.inset-0,
+#timeline-photo-14:hover .absolute.inset-0,
+#timeline-photo-15:hover .absolute.inset-0 {
+  background-color: rgba(0, 0, 0, 0.8) !important;
+}
+
+/* Individual text content effects */
+#timeline-photo-1 .text-white.opacity-0,
+#timeline-photo-2 .text-white.opacity-0,
+#timeline-photo-3 .text-white.opacity-0,
+#timeline-photo-4 .text-white.opacity-0,
+#timeline-photo-5 .text-white.opacity-0,
+#timeline-photo-6 .text-white.opacity-0,
+#timeline-photo-7 .text-white.opacity-0,
+#timeline-photo-8 .text-white.opacity-0,
+#timeline-photo-9 .text-white.opacity-0,
+#timeline-photo-10 .text-white.opacity-0,
+#timeline-photo-11 .text-white.opacity-0,
+#timeline-photo-12 .text-white.opacity-0,
+#timeline-photo-13 .text-white.opacity-0,
+#timeline-photo-14 .text-white.opacity-0,
+#timeline-photo-15 .text-white.opacity-0 {
+  transition: opacity 0.3s ease;
+}
+
+#timeline-photo-1:hover .text-white.opacity-0,
+#timeline-photo-2:hover .text-white.opacity-0,
+#timeline-photo-3:hover .text-white.opacity-0,
+#timeline-photo-4:hover .text-white.opacity-0,
+#timeline-photo-5:hover .text-white.opacity-0,
+#timeline-photo-6:hover .text-white.opacity-0,
+#timeline-photo-7:hover .text-white.opacity-0,
+#timeline-photo-8:hover .text-white.opacity-0,
+#timeline-photo-9:hover .text-white.opacity-0,
+#timeline-photo-10:hover .text-white.opacity-0,
+#timeline-photo-11:hover .text-white.opacity-0,
+#timeline-photo-12:hover .text-white.opacity-0,
+#timeline-photo-13:hover .text-white.opacity-0,
+#timeline-photo-14:hover .text-white.opacity-0,
+#timeline-photo-15:hover .text-white.opacity-0 {
+  opacity: 1 !important;
+}
+
+/* Individual bottom caption effects */
+#timeline-photo-1 .absolute.bottom-0,
+#timeline-photo-2 .absolute.bottom-0,
+#timeline-photo-3 .absolute.bottom-0,
+#timeline-photo-4 .absolute.bottom-0,
+#timeline-photo-5 .absolute.bottom-0,
+#timeline-photo-6 .absolute.bottom-0,
+#timeline-photo-7 .absolute.bottom-0,
+#timeline-photo-8 .absolute.bottom-0,
+#timeline-photo-9 .absolute.bottom-0,
+#timeline-photo-10 .absolute.bottom-0,
+#timeline-photo-11 .absolute.bottom-0,
+#timeline-photo-12 .absolute.bottom-0,
+#timeline-photo-13 .absolute.bottom-0,
+#timeline-photo-14 .absolute.bottom-0,
+#timeline-photo-15 .absolute.bottom-0 {
+  transition: opacity 0.3s ease;
+}
+
+#timeline-photo-1:hover .absolute.bottom-0,
+#timeline-photo-2:hover .absolute.bottom-0,
+#timeline-photo-3:hover .absolute.bottom-0,
+#timeline-photo-4:hover .absolute.bottom-0,
+#timeline-photo-5:hover .absolute.bottom-0,
+#timeline-photo-6:hover .absolute.bottom-0,
+#timeline-photo-7:hover .absolute.bottom-0,
+#timeline-photo-8:hover .absolute.bottom-0,
+#timeline-photo-9:hover .absolute.bottom-0,
+#timeline-photo-10:hover .absolute.bottom-0,
+#timeline-photo-11:hover .absolute.bottom-0,
+#timeline-photo-12:hover .absolute.bottom-0,
+#timeline-photo-13:hover .absolute.bottom-0,
+#timeline-photo-14:hover .absolute.bottom-0,
+#timeline-photo-15:hover .absolute.bottom-0 {
+  opacity: 0 !important;
+}
+
+/* Image hover effects - only for individual images */
+.chapter-card .relative.group img {
+  transition: all 0.3s ease;
+}
+
+.chapter-card .relative.group:hover img {
+  transform: scale(1.05);
+}
+
+/* Responsive design for timeline */
+@media (max-width: 768px) {
+  .chapter-card .flex {
+    flex-direction: column !important;
+  }
+  
+  .chapter-card .w-1\/2 {
+    width: 100% !important;
+    margin-bottom: 1rem;
+  }
+  
+  .chapter-card .pr-8,
+  .chapter-card .pl-8 {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    text-align: center !important;
+  }
+  
+  .chapter-card .justify-end,
+  .chapter-card .justify-start {
+    justify-content: center !important;
+  }
+}
+
+/* Bonus Section Styles - Black and White Design */
+#bonus-content {
+  background: #f9fafb;
+}
+
+.bonus-column {
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.bonus-column::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, transparent 30%, rgba(0, 0, 0, 0.02) 50%, transparent 70%);
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+  pointer-events: none;
+}
+
+.bonus-column:hover::before {
+  transform: translateX(100%);
+}
+
+/* White columns with black borders */
+.bonus-column.bg-white {
+  background: white;
+  border: 2px solid black;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.bonus-column.bg-white:hover {
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+  transform: translateY(-4px);
+}
+
+/* Black columns */
+.bonus-column.bg-black {
+  background: black;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.bonus-column.bg-black:hover {
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+  transform: translateY(-4px);
+}
+
+/* Image hover effects */
+.bonus-column img {
+  transition: all 0.3s ease;
+}
+
+.bonus-column:hover img {
+  transform: scale(1.05);
+}
+
+/* Responsive design for bonus section */
+@media (max-width: 1024px) {
+  .bonus-column {
+    margin-bottom: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .bonus-column {
+    margin-bottom: 1.5rem;
+  }
+  
+  .bonus-column h3 {
+    font-size: 1.125rem;
+  }
+  
+  .bonus-column p {
+    font-size: 0.875rem;
+  }
+}
+
+/* Section Border Styles */
+section {
+  border-bottom: 2px solid black;
+}
+
+section:last-child {
+  border-bottom: none;
+}
+
+/* Section Title Styles - Unified Design */
+section .bg-black.text-white.px-6.py-2.rounded-lg {
+  display: inline-block;
+  margin-bottom: 1rem;
+}
+
+section h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+
+section p {
+  font-size: 1.125rem;
+  line-height: 1.75;
+}
+
+/* Skills Card Styles - Black and White Design */
+.skill-card {
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.skill-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, transparent 30%, rgba(0, 0, 0, 0.02) 50%, transparent 70%);
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+  pointer-events: none;
+}
+
+.skill-card:hover::before {
+  transform: translateX(100%);
+}
+
+.skill-card:hover {
+  transform: translateY(-4px);
+}
+
+.skill-icon {
+  transition: all 0.3s ease;
+}
+
+.skill-card:hover .skill-icon {
+  transform: scale(1.1);
+}
+
+/* Responsive design for skills */
+@media (max-width: 768px) {
+  .skill-card {
+    margin-bottom: 2rem;
+  }
+  
+  .skill-card:last-child {
+    margin-bottom: 0;
+  }
+}
+
+/* Epilogue Section Styles */
+#epilogue .bg-white.border-2.border-black {
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+#epilogue .bg-white.border-2.border-black::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, transparent 30%, rgba(0, 0, 0, 0.02) 50%, transparent 70%);
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+  pointer-events: none;
+}
+
+#epilogue .bg-white.border-2.border-black:hover::before {
+  transform: translateX(100%);
+}
+
+#epilogue .bg-white.border-2.border-black:hover {
+  transform: translateY(-4px);
+} 
