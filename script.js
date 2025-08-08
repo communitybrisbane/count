@@ -2,8 +2,8 @@
 const translations = {
     ja: {
         headerSubtitle: "― 僕のワーホリ365日間 ―",
-        introTitle: "これは、Takuのワーホリ365日間の物語です。",
-        introBody: "大学院を休学し、オーストラリアへ。そこでは、想像もしなかった出会いと挑戦が待っていました。これは、情熱と戦略を持って生き抜いたブリスベンでのワーホリ生活365日間の記録です。"
+        introTitle: "Takuのワーホリ365日間",
+        introBody: "大学院を休学し、オーストラリアへ。そこでは、想像もしなかった出会いと挑戦が待っていました。これは、情熱と戦略を持って生き抜いたブリスベンでのワーホリハイライトです。"
     }
 };
 
@@ -48,47 +48,6 @@ function updatePageElements(T) {
 }
 
 /* ===== MODAL FUNCTIONS ===== */
-function openTimelineModal(modalId) {
-    const modal = document.getElementById('storyModal');
-    const modalTitle = document.getElementById('modalTitle');
-    const modalBody = document.getElementById('modalBody');
-    
-    const modalData = {
-        prologue1: {
-            title: "ゲームの始まり：レールを外れる決意の日",
-            body: "自分の人生を見つめなおし、「このままでは後悔する」という強い思いが込み上げてきました。周りの期待や安定した未来よりも、自分が本当に心惹かれる道を選びたい。そう決意し、休学届を提出。"
-        },
-        prologue2: {
-            title: "セブ島語学学校へ：オーストラリアへの助走",
-            body: "ワーホリのための英語力向上。まずはセブ島の語学学校で3ヶ月勉強することに。ここで初めて海外生活を体験し、多様な文化に触れ、英語でコミュニケーションをとる楽しさと難しさを学んだ。"
-        },
-        prologue3: {
-            title: "片道航空券と小さな自信：セブ島での成果と次の挑戦",
-            body: "セブ島での経験で少しだけ自信をつけ、片道航空券を握りしめてブリスベンへ。しかし、空港に降り立った瞬間、本当の挑戦はここからだと実感した。"
-        },
-        chapter1_1: {
-            title: "最初の試練：生活インフラを整えよ！",
-            body: "家なし、仕事なし、友達なし。ブリスベンでの生活はホステルから始まった。TFN申請、携帯契約、銀行口座開設 - RPGのような街の始まり。"
-        },
-        chapter1_2: {
-            title: "「友達の作り方、教えてください！」：孤独から生まれた原動力",
-            body: "世界中で友達を作る。それがここに来た理由。最初の1ヶ月で200人に会った。でも、彼らと友達になったか？1ヶ月過ごして気づいた大きな疑問。"
-        },
-        chapter1_3: {
-            title: "「ないなら、作ればいい」：community_brisbaneの誕生",
-            body: "「待っていても何も変わらない。欲しいものは、自分の手で作らなければ」。シンプルなBBQから始まり、これがここでの僕の目標となった。"
-        }
-    };
-    
-    const data = modalData[modalId];
-    if (data) {
-        modalTitle.textContent = data.title;
-        modalBody.textContent = data.body;
-        modal.classList.add('show');
-        document.body.style.overflow = 'hidden';
-    }
-}
-
 function closeModal() {
     const modal = document.getElementById('storyModal');
     modal.classList.remove('show');
